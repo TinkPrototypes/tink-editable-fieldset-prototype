@@ -1,0 +1,145 @@
+<!-- EDITABLE FORMFIELD EXAMPLE -->
+<h1 class="h2 text-center">Editable fieldset</h1>
+
+<div class="container margin-top margin-bottom">
+  <div class="row margin-top">
+    <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3">
+      <h2>Rizvanovic Zera</h2>
+      <form id="form">
+        <div class="fieldset-editable" tink-fieldset-editable>
+          <fieldset>
+            <legend>Contactgegevens {{editModeActive}} {{ctrl.editModeActive}}</legend>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-tel">Telefoon</label>
+              </div>
+              <div class="col-xs-8">
+                <input class="" type="tel" name="tel" id="input-tel" value="0484/17.17.71">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-tel">Fax</label>
+              </div>
+              <div class="col-xs-8">
+                <input disabled type="tel" name="fax" id="input-fax" value="03 123 45 67">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-email">E-mailadres</label>
+              </div>
+              <div class="col-xs-8">
+                <input class="" type="email" name="email" id="input-email" value="rzera@gmail.com">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+          </fieldset>
+          <div class="row margin-top fieldset-editable-buttons">
+            <div class="col-xs-12">
+              <button type="submit" id="submitBtn" class="btn-primary" type="submit" disabled>Wijzigingen opslaan</button>
+              <a href="" id="cancelBtn" class="btn btn-transparent">Annuleren</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- EDITABLE FORMFIELD ON HOVER EXAMPLE -->
+<!-- <hr>
+<h1 class="h2 text-center">Editable formfield on hover</h1>
+
+<div class="container margin-top margin-bottom">
+  <div class="row margin-top">
+    <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3">
+      <h2>Rizvanovic Zera</h2>
+      <form>
+        <div class="fieldset-editable fieldset-editable-is-hovered" tink-fieldset-editable>
+          <fieldset>
+            <legend>Contactgegevens</legend>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-tel">Telefoon</label>
+              </div>
+              <div class="col-xs-8">
+                <input class="" type="tel" id="input-tel" value="0484/17.17.71">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-tel">Fax</label>
+              </div>
+              <div class="col-xs-8">
+                <input disabled type="tel" id="input-fax" value="03 123 45 67">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-email">E-mailadres</label>
+              </div>
+              <div class="col-xs-8">
+                <input class="" type="email" id="input-email" value="rzera@gmail.com">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<!-- EDITABLE FORMFIELD WHEN CLICKED ON EXAMPLE -->
+<!-- <hr>
+<h1 class="h2 text-center">Editable formfield activated, only Cancel available</h1>
+
+<div class="container margin-top margin-bottom">
+  <div class="row margin-top">
+    <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3">
+      <h2>Rizvanovic Zera</h2>
+      <form>
+        <div class="fieldset-editable fieldset-editable-is-active" tink-fieldset>
+          <fieldset>
+            <legend>Contactgegevens</legend>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-tel">Telefoon</label>
+              </div>
+              <div class="col-xs-8">
+                <input class="" type="tel" id="input-tel" value="0484/17.17.71">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-tel">Fax</label>
+              </div>
+              <div class="col-xs-8">
+                <input disabled type="tel" id="input-fax" value="03 123 45 67">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="input-email">E-mailadres</label>
+              </div>
+              <div class="col-xs-8">
+                <input class="" type="email" id="input-email" value="rzera@gmail.com">
+              </div>
+            </div>
+          </fieldset>
+          <div class="row margin-top">
+            <div class="col-xs-8">
+              <button type="submit" class="btn-primary" data-ng-disabled="true">Wijzigingen opslaan</button>
+            </div>
+            <div class="col-xs-4">
+              <a href="javascript:void();" type="submit" class="cancel">Annuleren</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
