@@ -10,8 +10,11 @@ angular.module('tink.fieldsetEditable', [])
 
         jQuery(document).ready(function($) {
 
+
+          // Scope variables
           scope.editModeActive = false;
           scope.originalContents = [];
+
 
           // Hover behaviour
           $(element).find('input').hover(function() {
@@ -24,6 +27,7 @@ angular.module('tink.fieldsetEditable', [])
             }
           });
 
+
           // When input is focused, enable edit mode
           $(element).find('input').focus(function(event) {
             if(!scope.editModeActive) {
@@ -31,18 +35,13 @@ angular.module('tink.fieldsetEditable', [])
             }
           });
 
+
           // Check for clicks everywhere!
           $('html').click(function() {
             if(scope.editModeActive) {
               disableEditMode();
             }
           });
-
-          // Form was submitted
-          $('form').submit(function() {
-            disableEditMode(true);
-          });
-
 
           $(element).click(function(event) {
             if($(event.target).is('.btn-submit')) {
@@ -59,9 +58,13 @@ angular.module('tink.fieldsetEditable', [])
               event.stopPropagation();
             }
           });
-          // $(element).find('input').blur(function() {
-          //   disableEditMode();
-          // });
+
+
+          // Form was submitted
+          $('form').submit(function() {
+            disableEditMode(true);
+          });
+
 
           // Enable submit button on change
           $(element).find('input').on('input', function() {
@@ -69,6 +72,7 @@ angular.module('tink.fieldsetEditable', [])
           });
 
 
+          // Fields can be edited now
           function enableEditMode(event) {
             $(element).addClass('fieldset-editable-is-active');
             scope.editModeActive = true;
