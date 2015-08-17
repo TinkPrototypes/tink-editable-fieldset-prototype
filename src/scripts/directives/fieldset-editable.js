@@ -115,16 +115,16 @@ angular.module('tink.fieldsetEditable', [])
 
             $.each(els, function() {
               if (this.name && obj[this.name]) {
-                if(this.type == 'checkbox' || this.type == 'radio') {
-                  $(this).attr("checked", (obj[this.name] == $(this).val()));
+                if(this.type === 'checkbox' || this.type === 'radio') {
+                  $(this).attr('checked', (obj[this.name] === $(this).val()));
                 } else {
                   $(this).val(obj[this.name]);
                 }
               }
             });
-            return this;
           }
-        };
+          return true;
+        }
 
 
       }
