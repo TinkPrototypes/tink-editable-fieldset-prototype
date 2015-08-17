@@ -44,11 +44,11 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep', 'copy:dependenciesMd']
+        tasks: ['wiredep']
       },
       md: {
         files: ['bower_components/tink-*/bower.json'],
-        tasks: ['wiredep', 'copy:dependenciesMd']
+        tasks: ['wiredep']
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -548,7 +548,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'copy:dependenciesMd',
+      // 'copy:dependenciesMd',
       'wiredep',
       'concurrent:server',
       'replace:liveRev',
@@ -568,7 +568,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'copy:dependenciesMd',
+    // 'copy:dependenciesMd',
     'replace:md',
     'replace:html',
     'wiredep',
