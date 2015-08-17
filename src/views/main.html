@@ -5,38 +5,96 @@
       <form id="form">
         <div class="fieldset-editable" tink-fieldset-editable>
           <fieldset>
-            <legend>Contactgegevens</legend>
+            <legend>Identiteitsgegevens</legend>
             <div class="row form-group">
               <div class="col-xs-4">
-                <label for="input-tel">Telefoon</label>
+                <label for="firstname">Voornaam</label>
               </div>
               <div class="col-xs-8">
-                <input class="" type="tel" name="tel" id="input-tel" value="0484/17.17.71">
+                <input type="text" name="firstname" id="firstname" value="Zera">
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-xs-4">
-                <label for="input-tel">Fax</label>
+                <label for="name">Naam</label>
               </div>
               <div class="col-xs-8">
-                <input disabled type="tel" name="fax" id="input-fax" value="03 123 45 67">
+                <input type="text" name="name" id="name" value="Rizvanovic">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-xs-4">
-                <label for="input-email">E-mailadres</label>
+                <label for="insz">INSZ-nummer</label>
               </div>
               <div class="col-xs-8">
-                <input class="" type="email" name="email" id="input-email" value="rzera@gmail.com">
+                <input type="text" name="insz" id="insz" value="52113041449">
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+            <hr>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="dateofbirth">Geboortedatum</label>
+              </div>
+              <div class="col-xs-8">
+                <input disabled type="text" name="dateofbirth" id="dateofbirth" value="30/11/1952">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="landofbirth">Geboorteland</label>
+              </div>
+              <div class="col-xs-8">
+                <input disabled type="text" name="landofbirth" id="landofbirth" value="Joegoslavië">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="placeofbirth">Geboorteplaats</label>
+              </div>
+              <div class="col-xs-8">
+                <input disabled type="text" name="placeofbirth" id="placeofbirth" value="Banja">
+              </div>
+            </div>
+            <hr>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="dateofdeath">Datum overlijden</label>
+              </div>
+              <div class="col-xs-8">
+                <div class="anchor-add">
+                  <a href="" title="Datum overlijden toevoegen">+ toevoegen</a>
+                </div>
+                <div class="input-add">
+                  <input type="text" name="dateofdeath" id="dateofdeath" value="">
+                  <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="placeofdeath">Plaats overlijden</label>
+              </div>
+              <div class="col-xs-8">
+                <div class="anchor-add">
+                  <a href="" title="Plaats overlijden toevoegen">+ toevoegen</a>
+                </div>
+                <div class="input-add">
+                  <input type="text" name="placeofdeath" id="placeofdeath" value="">
+                  <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                </div>
               </div>
             </div>
           </fieldset>
-          <div class="row margin-top fieldset-editable-buttons">
-            <div class="col-xs-12">
-              <button type="submit" class="btn-primary btn-submit" type="submit" disabled>Wijzigingen opslaan</button>
-              <a href="" class="btn btn-transparent btn-cancel">Annuleren</a>
+          <div class="fieldset-editable-buttons">
+            <hr>
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="submit" class="btn-primary btn-submit" type="submit" disabled>Wijzigingen opslaan</button>
+                <a href="" class="btn btn-transparent btn-cancel">Annuleren</a>
+              </div>
             </div>
           </div>
         </div>

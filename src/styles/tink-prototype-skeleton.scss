@@ -7,6 +7,7 @@
 .fieldset-editable {
   border-radius: $border-radius-base;
   padding: rem(15);
+  transition: all $animation-speed linear;
 
   label {
     color: $gray;
@@ -22,7 +23,6 @@
     position: absolute;
     right: rem(25);
     top: rem(5);
-    // pointer-events: none;
     z-index: -1;
   }
 
@@ -34,13 +34,20 @@
 
     &:hover {
       background-color: rgba($black, .1);
-      // color: $white;
     }
   }
 
   .fieldset-editable-buttons {
     display: none;
-    padding-top: rem(8);
+  }
+
+  .anchor-add {
+    margin: 1px;
+    padding: rem($padding-base-vertical $padding-base-horizontal);
+  }
+
+  .input-add {
+    display: none;
   }
 
   /**
@@ -48,19 +55,24 @@
    */
 
   // Normal state
-    input,
-    .faux-input,
-    select,
-    textarea {
-      background-color: transparent;
-      border: 1px solid transparent;
+  input,
+  .faux-input,
+  select,
+  textarea {
+    background-color: transparent;
+    border: 1px solid transparent;
 
-      &[disabled] {
-        background-color: transparent;
-        cursor: default;
+    &[disabled] {
+      background-color: transparent;
+      cursor: default;
+    }
+
+    &[value=''] {
+      + .edit-icon {
+        display: none;
       }
     }
-  // }
+  }
 
   // Hovered state
   &-is-hovered {
@@ -88,8 +100,11 @@
 
   // Active state
   &-is-active {
-    // @extend .formfield-is-hovered;
     background-color: $gray-lighter;
+
+    hr {
+      border-top-color: $gray-light;
+    }
 
     input,
     .faux-input,
@@ -108,13 +123,3 @@
     }
   }
 }
-
-
-
-
-  // // Position the cancel element
-  // .cancel {
-  //   padding: 0;
-  //   position: relative;
-  //   top: rem(5);
-  // }
