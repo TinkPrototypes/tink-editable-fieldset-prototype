@@ -17,7 +17,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // Hover behaviour
-          $(element).find('input').hover(function() {
+          $(element).find(':input, .faux-input').hover(function() {
             if(!scope.editModeActive) {
               $(element).addClass('fieldset-editable-is-hovered');
             }
@@ -29,7 +29,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // When input is focused, enable edit mode
-          $(element).find('input').focus(function(event) {
+          $(element).find(':input').focus(function(event) {
             if(!scope.editModeActive) {
               enableEditMode(event);
             }
@@ -106,6 +106,7 @@ angular.module('tink.fieldsetEditable', [])
           saveChanges = typeof saveChanges !== 'undefined' ? saveChanges : false;
           var els = $(element).find(':input').get();
           // console.log(els);
+          // faux-input
           $.each(els, function() {
             if(this.value === '' && this.type !== 'submit' && $(this).parents('.input-add').length > 0) {
               $(this).parents('.input-add').toggle(0);
@@ -114,7 +115,7 @@ angular.module('tink.fieldsetEditable', [])
           });
 
           if(saveChanges) {
-            $('input').blur();
+            $(':input').blur();
             console.log('Changes saved!');
           } else {
             resetValues(scope.originalContents, els);

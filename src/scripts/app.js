@@ -19,6 +19,7 @@
    'ngTouch',
    'tink.navigation',
    'tink.tinkApi',
+   'tink.datepicker',
    'tink.fieldsetEditable'
    ])
  .config(function ($routeProvider) { /*, $locationProvider */
