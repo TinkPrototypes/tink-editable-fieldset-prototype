@@ -11,7 +11,7 @@ angular.module('tink.fieldsetEditable', [])
         jQuery(document).ready(function($) {
 
           scope.editModeActive = false;
-          scope.originalContents = 'bla';
+          scope.originalContents = [];
 
           // Hover behaviour
           $(element).find('input').hover(function() {
@@ -82,6 +82,7 @@ angular.module('tink.fieldsetEditable', [])
           }
 
 
+          // Check if the user cancelled editing or not
           function disableEditMode(saveChanges) {
             saveChanges = typeof saveChanges !== 'undefined' ? saveChanges : false;
 
@@ -89,67 +90,8 @@ angular.module('tink.fieldsetEditable', [])
               $('input').blur();
               console.log('Changes saved!');
             } else {
-              var els = $(element).find(':input').get();
-              console.log(els);
-              values(scope.originalContents);
-
-              // var data = scope.originalContents;
-
-              // $.each(els, function() {
-              //   console.log(this);
-              //   if (this.name && !this.disabled && (this.checked
-              //                   || /select|textarea/i.test(this.nodeName)
-              //                   || /text|hidden|password/i.test(this.type))) {
-              //       if(data[this.name] == undefined){
-              //           data[this.name] = [];
-              //       }
-              //       data[this.name].push($(this).val());
-              //   }
-              // });
-
-              // if(arguments.length === 0) {
-              //   // return all data
-              //   data = {};
-
-              //   $.each(els, function() {
-              //     if (this.name && !this.disabled && (this.checked
-              //                       || /select|textarea/i.test(this.nodeName)
-              //                       || /text|hidden|password/i.test(this.type))) {
-              //       if(data[this.name] == undefined){
-              //         data[this.name] = [];
-              //       }
-              //       data[this.name].push($(this).val());
-              //     }
-              //   });
-              //   return data;
-
-              // } else {
-              //   $.each(els, function() {
-              //     if (this.name && data[this.name]) {
-              //       var names = data[this.name];
-              //       var $this = $(this);
-              //       if(Object.prototype.toString.call(names) !== '[object Array]'){
-              //         names = [names]; //backwards compat to old version of this code
-              //       }
-              //       if(this.type == 'checkbox' || this.type == 'radio') {
-              //         var val = $this.val();
-              //         var found = false;
-              //         for(var i = 0; i < names.length; i++){
-              //           if(names[i] == val){
-              //             found = true;
-              //             break;
-              //           }
-              //         }
-              //         $this.attr("checked", found);
-              //       } else {
-              //         $this.val(names[0]);
-              //       }
-              //     }
-              //   });
-              //   return this;
-              // }
-
-
+              resetValues(scope.originalContents);
+              console.log('Operation cancelled!');
             }
 
             if($('input:focus').length === 0) {
@@ -160,35 +102,30 @@ angular.module('tink.fieldsetEditable', [])
           }
         });
 
-        function values(data) {
-          console.log(data);
-          var els = $(this).find(':input').get();
 
-          if(typeof data != 'object') {
-            // return all data
-            data = {};
+        // Reset values
+        function resetValues(data) {
+          if(!$('.btn-submit').prop('disabled')) {
+            var els = $(element).find(':input').get();
+
+            var obj = {}; // Convert the serializeArray into an accesible object
+            for (var i = 0, l = data.length; i < l; i++) {
+                obj[data[i].name] = data[i].value;
+            }
 
             $.each(els, function() {
-              if (this.name && !this.disabled && (this.checked
-                || /select|textarea/i.test(this.nodeName)
-                || /text|hidden|password/i.test(this.type))) {
-                data[this.name] = $(this).val();
+              if (this.name && obj[this.name]) {
+                if(this.type == 'checkbox' || this.type == 'radio') {
+                  $(this).attr("checked", (obj[this.name] == $(this).val()));
+                } else {
+                  $(this).val(obj[this.name]);
+                }
               }
             });
-            return data;
-          } else {
-          $.each(els, function() {
-            if (this.name && data[this.name]) {
-              if(this.type == 'checkbox' || this.type == 'radio') {
-                $(this).attr("checked", (data[this.name] == $(this).val()));
-              } else {
-                $(this).val(data[this.name]);
-              }
-            }
-          });
-          return $(this);
+            return this;
           }
         };
+
 
       }
     };
