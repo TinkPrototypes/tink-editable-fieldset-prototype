@@ -17,7 +17,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // Hover behaviour
-          $(element).find(':input').hover(function() {
+          $(element).find(':input, input[type=\'checkbox\'] + label, input[type=\'radio\'] + label').hover(function() {
             if(!scope.editModeActive) {
               $(element).addClass('fieldset-editable-is-hovered');
             }
@@ -34,11 +34,11 @@ angular.module('tink.fieldsetEditable', [])
               enableEditMode(event);
             }
           });
-          $("input[type='checkbox']").change(function() {
+          $('input[type=\'checkbox\']').change(function() {
             if(!scope.editModeActive) {
               enableEditMode(event);
-              $('.btn-submit').prop('disabled', false);
             }
+            $('.btn-submit').prop('disabled', false);
           });
 
 
@@ -73,7 +73,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // Enable submit button on change
-          $(element).find('input').on('input', function() {
+          $(element).find(':input').on('input', function() {
             $('.btn-submit').prop('disabled', false);
           });
 
@@ -101,7 +101,10 @@ angular.module('tink.fieldsetEditable', [])
           scope.originalContents = $(form).serializeArray();
           console.log(scope.originalContents);
           window.setTimeout (function(){
-            event.currentTarget.select();
+            try {
+              event.currentTarget.select();
+            } catch(e) {
+            }
           }, 10);
           $(element).removeClass('fieldset-editable-is-hovered');
         }
@@ -147,12 +150,17 @@ angular.module('tink.fieldsetEditable', [])
             }
 
             $.each(els, function() {
-              if (this.name && obj[this.name]) {
+              if (this.name && obj[this.name]) { // object is in list
                 if(this.type === 'checkbox' || this.type === 'radio') {
-                  console.log('yes');
-                  $(this).attr('checked', (obj[this.name] === $(this).val()));
+                  $(this).attr('checked', (obj[this.name] !== $(this).val()));
                 } else {
                   $(this).val(obj[this.name]);
+                }
+              } else { // object is NOT in list
+                if (this.type === 'checkbox') {
+                  $(this).prop('checked', true);
+                } else {
+                  $(this).val('');
                 }
               }
             });

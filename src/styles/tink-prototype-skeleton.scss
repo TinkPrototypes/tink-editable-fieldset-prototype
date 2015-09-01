@@ -17,7 +17,23 @@
     padding: rem($padding-base-vertical $padding-base-horizontal 0 0);
   }
 
+  input[type="checkbox"],
+  input[type="radio"] {
+    + label {
+      color: $text-color;
+      margin-left: rem(5);
+    }
+  }
+
   // Style the edit icon behind an inputfield
+  .empty-icon {
+    display: none;
+    position: absolute;
+    left: rem(26);
+    top: rem(7);
+    z-index: -1;
+  }
+
   .edit-icon {
     color: $gray-light;
     position: absolute;
@@ -38,7 +54,7 @@
   }
 
   .fieldset-editable-buttons {
-    display: none;
+    visibility: hidden;
   }
 
   .anchor-add {
@@ -67,9 +83,10 @@
       cursor: default;
     }
 
-    &[value=''] {
-      + .edit-icon {
-        display: none;
+    // &[value=''] {
+    &:invalid {
+      + .empty-icon {
+        display: block;
       }
     }
   }
@@ -124,9 +141,16 @@
     }
 
     .fieldset-editable-buttons {
-      display: block;
+      visibility: visible;
     }
   }
+
+  // &:not(.fieldset-editable-is-hovered),
+  // &:not(.fieldset-editable-is-active) {
+  //   textarea {
+  //     resize: none;
+  //   }
+  // }
 }
 
 .legend {
