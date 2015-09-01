@@ -5,16 +5,167 @@
       <form id="form">
         <div class="fieldset-editable" tink-fieldset-editable>
           <fieldset>
-            <legend>Identiteitsgegevens</legend>
+            <legend>Algemeen</legend>
+
             <div class="row form-group">
               <div class="col-xs-4">
-                <label for="firstname">Voornaam</label>
+                <label for="field1">Type</label>
               </div>
               <div class="col-xs-8">
-                <input type="text" name="firstname" id="firstname" value="Zera">
+                <input type="text" name="field1" id="field1" value="Mutualiteit">
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
               </div>
             </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field2">Indeling</label>
+              </div>
+              <div class="col-xs-8">
+                <div class="select">
+                  <select name="field2" id="field2">
+                    <option value="Christelijke Mutualiteit">Christelijke Mutualiteit</option>
+                    <option value="Socialistische Mutualiteit">Socialistische Mutualiteit</option>
+                    <option value="Liberale Mutualiteit">Liberale Mutualiteit</option>
+                    <option value="Onafhankelijk Ziekenfonds">Onafhankelijk Ziekenfonds</option>
+                    <option value="Neutraal Ziekenfonds">Neutraal Ziekenfonds</option>
+                    <option value="Ander">Ander</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field3">Adres</label>
+              </div>
+              <div class="col-xs-8">
+                <input type="text" name="field3" id="field3" value="Molenbergstraat 2">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-xs-8 col-xs-push-4">
+                <input type="text" name="field4" id="field4" value="2000 Antwerpen">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field5">Telefoonnr.</label>
+              </div>
+              <div class="col-xs-8">
+                <input type="text" name="field5" id="field5" value="03/303.33.03">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field6">Opmerking</label>
+              </div>
+              <div class="col-xs-8">
+                <textarea name="field6" id="field6" rows="4"></textarea>
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field7">Betaalwijze</label>
+              </div>
+              <div class="col-xs-8">
+                <div class="select">
+                  <select name="field2" id="field2">
+                    <option value="Cash">Cash</option>
+                    <option value="Bancontact">Bancontact</option>
+                    <option value="Maestro">Maestro</option>
+                    <option value="VISA">VISA</option>
+                    <option value="Paypal">Paypal</option>
+                    <option value="Andere">Andere</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- <hr> -->
+
+
+
+            <h2 class="legend">Personalia</h2>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field8">Lidnummer</label>
+              </div>
+              <div class="col-xs-8">
+                <input type="text" name="field8" id="field8" value="Zera">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field9">Datum aansluiting</label>
+              </div>
+              <div class="col-xs-8">
+                <!-- <data-tink-datepicker data-ng-model="selectedDate1"></data-tink-datepicker> -->
+                <input type="text" name="field9" id="field9" value="Zera">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field10">Soort aansluiting</label>
+              </div>
+              <div class="col-xs-8">
+                <input type="text" name="field10" id="field10" value="Zera">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field11">Toestand</label>
+              </div>
+              <div class="col-xs-8">
+                <div class="select">
+                  <select name="field11" id="field11">
+                    <option value="In orde">In orde</option>
+                    <option value="Niet in orde">Niet in orde</option>
+                    <option value="Niet geweten">Niet geweten</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field12">Bijdrage</label>
+              </div>
+              <div class="col-xs-8">
+                <input type="text" name="field12" id="field12" value="Zera">
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field13">Recht op regeling</label>
+              </div>
+              <div class="col-xs-8">
+                <div class="checkbox">
+                  <input type="checkbox" id="checkbox1" name="checkbox1" value="" checked="">
+                  <label for="checkbox1">Option one</label>
+                </div>
+              </div>
+            </div>
+
+
+            <!--
+
             <div class="row form-group">
               <div class="col-xs-4">
                 <label for="name">Naam</label>
@@ -24,7 +175,7 @@
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
               </div>
             </div>
-            <!-- <div class="row form-group">
+            <div class="row form-group">
               <div class="col-xs-4">
                 <label>Geslacht</label>
               </div>
@@ -38,7 +189,7 @@
                   <label for="sex2">Man</label>
                 </div>
               </div>
-            </div> -->
+            </div>
             <div class="row form-group">
               <div class="col-xs-4">
                 <label for="insz">INSZ-nummer</label>
@@ -83,7 +234,6 @@
                   <a href="" title="Datum overlijden toevoegen">+ toevoegen</a>
                 </div>
                 <div class="input-add">
-                  <!-- <data-tink-datepicker data-ng-model="selectedDate1"></data-tink-datepicker> -->
                   <input type="text" name="dateofdeath" id="dateofdeath" value="">
                   <span class="edit-icon"><i class="fa fa-pencil"></i></span>
                 </div>
@@ -102,7 +252,7 @@
                   <span class="edit-icon"><i class="fa fa-pencil"></i></span>
                 </div>
               </div>
-            </div>
+            </div> -->
           </fieldset>
           <div class="fieldset-editable-buttons">
             <hr>
