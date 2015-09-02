@@ -14,6 +14,7 @@ angular.module('tink.fieldsetEditable', [])
           // Scope variables
           scope.editModeActive = false;
           scope.originalContents = [];
+          scope.checkboxClicked = '';
 
 
           // Hover behaviour
@@ -31,12 +32,12 @@ angular.module('tink.fieldsetEditable', [])
           // When input is focused, enable edit mode
           $(element).find(':input').focus(function(event) {
             if(!scope.editModeActive) {
-              enableEditMode(event);
+              enableEditMode(event, '');
             }
           });
           $('input[type=\'checkbox\']').change(function() {
             if(!scope.editModeActive) {
-              enableEditMode(event);
+              enableEditMode(event, this);
             }
             $('.btn-submit').prop('disabled', false);
           });
@@ -51,12 +52,10 @@ angular.module('tink.fieldsetEditable', [])
 
           $(element).click(function(event) {
             if($(event.target).is('.btn-submit')) {
-              // console.log("ok");
               event.stopPropagation();
               disableEditMode(true);
             }
             if($(event.target).is('.btn-cancel')) {
-              // console.log("cancel");
               event.stopPropagation();
               disableEditMode();
             }
@@ -94,12 +93,16 @@ angular.module('tink.fieldsetEditable', [])
          */
 
         // Fields can be edited now
-        function enableEditMode(event) {
+        function enableEditMode(event, checkbox) {
           $(element).addClass('fieldset-editable-is-active');
           scope.editModeActive = true;
           var form = $(element).closest('form');
           scope.originalContents = $(form).serializeArray();
           console.log(scope.originalContents);
+
+          // Checkbox fix
+          scope.checkboxClicked = checkbox;
+
           window.setTimeout (function(){
             try {
               event.currentTarget.select();
@@ -114,7 +117,6 @@ angular.module('tink.fieldsetEditable', [])
         function disableEditMode(saveChanges) {
           saveChanges = typeof saveChanges !== 'undefined' ? saveChanges : false;
           var els = $(element).find(':input').get();
-          // console.log(els);
           $.each(els, function() {
             if(this.value === '' && this.type !== 'submit' && $(this).parents('.input-add').length > 0) {
               $(this).parents('.input-add').toggle(0);
@@ -150,15 +152,22 @@ angular.module('tink.fieldsetEditable', [])
             }
 
             $.each(els, function() {
-              if (this.name && obj[this.name]) { // object is in list
+              if (this.name && obj[this.name]) {
                 if(this.type === 'checkbox' || this.type === 'radio') {
-                  $(this).attr('checked', (obj[this.name] !== $(this).val()));
+                  if(scope.checkboxClicked !== '') {
+                    $(this).prop('checked', false); // Checkbox was initially unchecked and was clicked first
+                  } else {
+                    $(this).prop('checked', true); // Checkbox was initially checked and was not clicked first
+                  }
                 } else {
                   $(this).val(obj[this.name]);
                 }
               } else { // object is NOT in list
-                if (this.type === 'checkbox') {
-                  $(this).prop('checked', true);
+                if(this.type === 'checkbox' || this.type === 'radio') {
+                  console.log(3);
+                  if(scope.checkboxClicked !== '') {
+                    $(this).prop('checked', true); // Checkbox was initially checked and was clicked first
+                  }
                 } else {
                   $(this).val('');
                 }
