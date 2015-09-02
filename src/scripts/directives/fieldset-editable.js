@@ -1,15 +1,12 @@
 'use strict';
 angular.module('tink.fieldsetEditable', [])
-  .directive('tinkFieldsetEditable', [function () {
+  .directive('tinkFieldsetEditable', ['$timeout', function ($timeout) {
     return {
       restrict: 'AE',
-      scope: {
-        // editModeActive: '='
-      },
       link: function(scope, element) {
 
-        jQuery(document).ready(function($) {
-
+        // jQuery(document).ready(function($) {
+        $timeout(function() {
 
           // Scope variables
           scope.editModeActive = false;
@@ -17,8 +14,15 @@ angular.module('tink.fieldsetEditable', [])
           scope.checkboxClicked = '';
 
 
+          // Datepicker
+          // var test = $(element).find('data-tink-datepicker');
+          // console.log(test);
+          // var compiledElem = $compile(test)(scope);
+          // test.replaceWith(compiledElem);
+
+
           // Hover behaviour
-          $(element).find(':input, input[type=\'checkbox\'] + label, input[type=\'radio\'] + label').hover(function() {
+          $(element).find(':input, .faux-input, input[type=\'checkbox\'] + label, input[type=\'radio\'] + label').hover(function() {
             if(!scope.editModeActive) {
               $(element).addClass('fieldset-editable-is-hovered');
             }
@@ -30,7 +34,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // When input is focused, enable edit mode
-          $(element).find(':input').focus(function(event) {
+          $(element).find(':input, .faux-input').focus(function(event) {
             if(!scope.editModeActive) {
               enableEditMode(event, '');
             }
