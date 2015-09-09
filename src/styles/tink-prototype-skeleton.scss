@@ -37,8 +37,17 @@
   .edit-icon {
     color: $gray-light;
     position: absolute;
-    right: rem(20);
+    right: rem(22);
     top: rem(6);
+    z-index: -1;
+  }
+
+  .add-icon {
+    color: $link-color;
+    display: none;
+    position: absolute;
+    right: rem(22);
+    top: rem(7);
     z-index: -1;
   }
 
@@ -85,7 +94,13 @@
 
     // &[value=''] {
     &:invalid {
-      + .empty-icon {
+      ~ .empty-icon {
+        display: block;
+      }
+      ~ .edit-icon {
+        display: none;
+      }
+      ~ .add-icon {
         display: block;
       }
     }

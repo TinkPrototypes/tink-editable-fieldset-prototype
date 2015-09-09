@@ -5,6 +5,10 @@ angular.module('tink.fieldsetEditable', [])
       restrict: 'AE',
       link: function(scope, element) {
 
+        jQuery(document).ready(function() {
+          storeRadioButtonValuesInHiddenInputFields();
+        });
+
         // jQuery(document).ready(function($) {
         $timeout(function() {
 
@@ -39,7 +43,7 @@ angular.module('tink.fieldsetEditable', [])
               enableEditMode(event, '');
             }
           });
-          $('input[type=\'checkbox\']').change(function() {
+          $('input[type=\'checkbox\'], input[type=\'radio\']').change(function() {
             if(!scope.editModeActive) {
               enableEditMode(event, this);
             }
@@ -68,7 +72,6 @@ angular.module('tink.fieldsetEditable', [])
             }
           });
 
-
           // Form was submitted
           $('form').submit(function() {
             disableEditMode(true);
@@ -77,7 +80,13 @@ angular.module('tink.fieldsetEditable', [])
 
           // Enable submit button on change
           $(element).find(':input').on('input', function() {
-            $('.btn-submit').prop('disabled', false);
+            enableSubmitButton();
+          });
+
+          scope.$watch('datumAansluiting', function() {
+            if(scope.editModeActive) {
+              enableSubmitButton();
+            }
           });
 
 
@@ -89,6 +98,7 @@ angular.module('tink.fieldsetEditable', [])
           });
 
         });
+
 
 
         /**
@@ -129,6 +139,7 @@ angular.module('tink.fieldsetEditable', [])
           });
 
           if(saveChanges) {
+            storeRadioButtonValuesInHiddenInputFields();
             $('input').blur();
             console.log('Changes saved!');
           } else {
@@ -157,21 +168,32 @@ angular.module('tink.fieldsetEditable', [])
 
             $.each(els, function() {
               if (this.name && obj[this.name]) {
-                if(this.type === 'checkbox' || this.type === 'radio') {
+                if(this.type === 'checkbox') {
                   if(scope.checkboxClicked !== '') {
                     $(this).prop('checked', false); // Checkbox was initially unchecked and was clicked first
                   } else {
                     $(this).prop('checked', true); // Checkbox was initially checked and was not clicked first
                   }
+
+                } else if(this.type === 'radio') { // Radio button was initially checked
+                  if((this.value) === $('#' + this.name).val()) {
+                    $(this).prop('checked', true);
+                  } else {
+                    $(this).prop('checked', false);
+                  }
+
                 } else {
                   $(this).val(obj[this.name]);
                 }
               } else { // object is NOT in list
-                if(this.type === 'checkbox' || this.type === 'radio') {
-                  console.log(3);
+                if(this.type === 'checkbox') {
                   if(scope.checkboxClicked !== '') {
                     $(this).prop('checked', true); // Checkbox was initially checked and was clicked first
                   }
+
+                } else if(this.type === 'radio') {
+                  $(this).prop('checked', false); // Radio button was initially unchecked and was not clicked first
+
                 } else {
                   $(this).val('');
                 }
@@ -179,6 +201,23 @@ angular.module('tink.fieldsetEditable', [])
             });
           }
           return true;
+        }
+
+
+        // Store radio button values in hidden input fields
+        function storeRadioButtonValuesInHiddenInputFields() {
+          var radiobuttons = $(element).find('input[type=\'radio\']').get();
+          $.each(radiobuttons, function() {
+            if(this.checked) {
+              $('#' + this.name).val(this.value);
+            }
+          });
+        }
+
+
+        // Enable submit button
+        function enableSubmitButton() {
+          $('.btn-submit').prop('disabled', false);
         }
 
 

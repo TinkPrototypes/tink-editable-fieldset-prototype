@@ -15,6 +15,7 @@
                 <input type="text" name="field1" id="field1" value="Mutualiteit" required>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
@@ -44,6 +45,7 @@
                 <input type="text" name="field3" id="field3" value="Molenbergstraat 2" required>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
             <div class="row form-group">
@@ -51,6 +53,7 @@
                 <input type="text" name="field4" id="field4" value="2000 Antwerpen" required>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
@@ -62,6 +65,7 @@
                 <input type="text" name="field5" id="field5" value="03/303.33.03" required>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
@@ -73,6 +77,7 @@
                 <textarea name="field6" id="field6" rows="4" required></textarea>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
@@ -108,6 +113,7 @@
                 <input type="text" name="field8" id="field8" value="" required>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
@@ -117,7 +123,7 @@
               </div>
               <div class="col-xs-8">
                 <div class="hover-helper">
-                  <data-tink-datepicker data-ng-model="selectedDate1"></data-tink-datepicker>
+                  <data-tink-datepicker data-ng-model="datumAansluiting"></data-tink-datepicker>
                 </div>
                 <!-- <input type="text" name="field9" id="field9" value="" required> -->
                 <span class="empty-icon">-</span>
@@ -133,6 +139,7 @@
                 <input type="text" name="field10" id="field10" value="" required>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
@@ -141,13 +148,30 @@
                 <label for="field11">Toestand</label>
               </div>
               <div class="col-xs-8">
-                <div class="select">
+                <div class="radio">
+                  <input type="radio" id="radio1" name="radio" value="In orde">
+                  <label for="radio1">In orde</label>
+                </div>
+                <div class="radio">
+                  <input type="radio" id="radio2" name="radio" value="Niet in orde">
+                  <label for="radio2">Niet in orde</label>
+                </div>
+                <div class="radio">
+                  <input type="radio" id="radio3" name="radio" value="Niet geweten" checked>
+                  <label for="radio3">Niet geweten</label>
+                </div>
+                <!--
+                  For radio buttons it is very important to add a hidden input field
+                  with an id that is equal to the radio button's name
+                -->
+                <input type="hidden" id="radio" name="radio-hidden" value="">
+                <!-- <div class="select">
                   <select name="field11" id="field11">
                     <option value="In orde">In orde</option>
                     <option value="Niet in orde">Niet in orde</option>
                     <option value="Niet geweten">Niet geweten</option>
                   </select>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -159,6 +183,7 @@
                 <input type="text" name="field12" id="field12" value="" required>
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
