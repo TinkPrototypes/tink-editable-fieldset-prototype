@@ -3,8 +3,12 @@ angular.module('tink.fieldsetEditable', [])
   .directive('tinkFieldsetEditable', ['$timeout', function ($timeout) {
     return {
       restrict: 'AE',
-      scope: {},
+      scope: {
+        data: '='
+      },
       link: function(scope, element) {
+
+        scope.data = {};
 
         jQuery(document).ready(function() {
           storeRadioButtonValuesInHiddenInputFields();
@@ -95,12 +99,11 @@ angular.module('tink.fieldsetEditable', [])
 
           // Watch for ng-model-change on date field
           scope.$watchCollection('data', function(newValue, oldValue) {
-            if(scope.editModeActive) {
-              enableSubmitButton();
-            } else {
-              console.log('Edit mode not active!');
-            }
             console.log(oldValue, newValue);
+            console.log(angular.equals(newValue, oldValue));
+            if(scope.editModeActive && newValue !== oldValue && newValue) {
+              enableSubmitButton();
+            }
           }, true);
 
         });

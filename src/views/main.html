@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3">
       <h2>Rizvanovic Zera</h2>
       <form id="form">
-        <div class="fieldset-editable" tink-fieldset-editable>
+        <div class="fieldset-editable" tink-fieldset-editable data-data="form1" data-ng-init="form1={rijksregisternr:null}">
           <fieldset>
             <legend>Algemeen</legend>
 
@@ -42,7 +42,7 @@
                 <label for="field14">Rijksregisternr.</label>
               </div>
               <div class="col-xs-8">
-              <tink-identity-number name="field14" data-ng-model="data.rijksregisternr" required></tink-identity-number>
+              <tink-identity-number name="field14" data-ng-model="form1.rijksregisternr" required></tink-identity-number>
                 <!-- <input type="text" name="field14" id="field14" value="03/303.33.03" required> -->
                 <span class="empty-icon">-</span>
                 <span class="edit-icon"><i class="fa fa-pencil"></i></span>
@@ -126,7 +126,7 @@
 
             <!-- <hr> -->
 
-        <div class="fieldset-editable" tink-fieldset-editable>
+        <div class="fieldset-editable" tink-fieldset-editable data-data="form2" data-ng-init="form2={datumaansluiting:null}">
           <fieldset>
             <legend>Personalia</legend>
 
@@ -148,7 +148,7 @@
               </div>
               <div class="col-xs-8">
                 <div class="hover-helper">
-                  <data-tink-datepicker data-ng-model="data.datumaansluiting"></data-tink-datepicker>
+                  <data-tink-datepicker data-ng-model="form2.datumaansluiting"></data-tink-datepicker>
                 </div>
                 <!-- <input type="text" name="field9" id="field9" value="" required> -->
                 <span class="empty-icon">-</span>
