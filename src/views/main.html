@@ -21,7 +21,7 @@
 
             <div class="row form-group">
               <div class="col-xs-4">
-                <label for="field2">Insteling</label>
+                <label for="field2">Instelling</label>
               </div>
               <div class="col-xs-8">
                 <div class="select">
@@ -34,6 +34,19 @@
                     <option value="Andere">Andere</option>
                   </select>
                 </div>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-4">
+                <label for="field14">Rijksregisternr.</label>
+              </div>
+              <div class="col-xs-8">
+              <tink-identity-number name="field14" data-ng-model="data.rijksregisternr" required></tink-identity-number>
+                <!-- <input type="text" name="field14" id="field14" value="03/303.33.03" required> -->
+                <span class="empty-icon">-</span>
+                <span class="edit-icon"><i class="fa fa-pencil"></i></span>
+                <span class="add-icon"><i class="fa fa-plus"></i></span>
               </div>
             </div>
 
@@ -135,7 +148,7 @@
               </div>
               <div class="col-xs-8">
                 <div class="hover-helper">
-                  <data-tink-datepicker data-ng-model="datumAansluiting"></data-tink-datepicker>
+                  <data-tink-datepicker data-ng-model="data.datumaansluiting"></data-tink-datepicker>
                 </div>
                 <!-- <input type="text" name="field9" id="field9" value="" required> -->
                 <span class="empty-icon">-</span>

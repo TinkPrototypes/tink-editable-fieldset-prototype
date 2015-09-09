@@ -96,7 +96,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // Watch for ng-model-change on date field
-          scope.$watchCollection('datumAansluiting', function(newValue, oldValue) {
+          scope.$watchCollection('data', function(newValue, oldValue) {
             if(scope.editModeActive) {
               enableSubmitButton();
             } else {

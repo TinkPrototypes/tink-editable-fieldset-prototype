@@ -28,6 +28,7 @@
 
   // Style the edit icon behind an inputfield
   .empty-icon {
+    color: $gray-light;
     display: none;
     position: absolute;
     left: rem(26);
