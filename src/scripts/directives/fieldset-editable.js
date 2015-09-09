@@ -3,9 +3,7 @@ angular.module('tink.fieldsetEditable', [])
   .directive('tinkFieldsetEditable', ['$timeout', function ($timeout) {
     return {
       restrict: 'AE',
-      scope: {
-        datumAansluiting: '='
-      },
+      scope: {},
       link: function(scope, element) {
 
         jQuery(document).ready(function() {
@@ -169,7 +167,7 @@ angular.module('tink.fieldsetEditable', [])
 
         // Reset values
         function resetValues(data, els) {
-          if(!$('.btn-submit').prop('disabled')) {
+          if(!$(element).find('.btn-submit').prop('disabled')) {
 
             var obj = {}; // Convert the serializeArray into an accesible object
             for (var i = 0, l = data.length; i < l; i++) {
