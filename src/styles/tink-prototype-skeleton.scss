@@ -6,6 +6,7 @@
 
 .fieldset-editable {
   border-radius: $border-radius-base;
+  margin: rem(8 0);
   padding: rem(15);
   transition: all $animation-speed linear;
 

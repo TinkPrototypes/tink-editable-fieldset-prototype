@@ -3,6 +3,9 @@ angular.module('tink.fieldsetEditable', [])
   .directive('tinkFieldsetEditable', ['$timeout', function ($timeout) {
     return {
       restrict: 'AE',
+      scope: {
+        datumAansluiting: '='
+      },
       link: function(scope, element) {
 
         jQuery(document).ready(function() {
@@ -43,11 +46,11 @@ angular.module('tink.fieldsetEditable', [])
               enableEditMode(event, '');
             }
           });
-          $('input[type=\'checkbox\'], input[type=\'radio\']').change(function() {
+          $(element).find('input[type=\'checkbox\'], input[type=\'radio\']').change(function() {
             if(!scope.editModeActive) {
               enableEditMode(event, this);
             }
-            $('.btn-submit').prop('disabled', false);
+            $(element).find('.btn-submit').prop('disabled', false);
           });
 
 
@@ -73,7 +76,7 @@ angular.module('tink.fieldsetEditable', [])
           });
 
           // Form was submitted
-          $('form').submit(function() {
+          $(element).find('form').submit(function() {
             disableEditMode(true);
           });
 
@@ -83,21 +86,28 @@ angular.module('tink.fieldsetEditable', [])
             enableSubmitButton();
           });
 
-          scope.$watch('datumAansluiting', function() {
-            if(scope.editModeActive) {
-              enableSubmitButton();
-            }
-          });
-
 
           // Show input field when link is clicked
-          $('.anchor-add').click(function() {
+          $(element).find('.anchor-add').click(function() {
             $('.anchor-add').toggle(0);
             $('.input-add').toggle(0);
             $(this).next().find(':input').focus();
           });
 
+
+          // Watch for ng-model-change on date field
+          scope.$watchCollection('datumAansluiting', function(newValue, oldValue) {
+            if(scope.editModeActive) {
+              enableSubmitButton();
+            } else {
+              console.log('Edit mode not active!');
+            }
+            console.log(oldValue, newValue);
+          }, true);
+
         });
+
+
 
 
 
@@ -217,7 +227,7 @@ angular.module('tink.fieldsetEditable', [])
 
         // Enable submit button
         function enableSubmitButton() {
-          $('.btn-submit').prop('disabled', false);
+          $(element).find('.btn-submit').prop('disabled', false);
         }
 
 
