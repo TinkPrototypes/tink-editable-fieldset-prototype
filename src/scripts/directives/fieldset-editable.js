@@ -20,6 +20,7 @@ angular.module('tink.fieldsetEditable', [])
           // Scope variables
           scope.editModeActive = false;
           scope.originalContents = [];
+          scope.originalData = {};
           scope.checkboxClicked = '';
 
 
@@ -99,9 +100,9 @@ angular.module('tink.fieldsetEditable', [])
 
           // Watch for ng-model-change on date field
           scope.$watchCollection('data', function(newValue, oldValue) {
-            console.log(oldValue, newValue);
-            console.log(angular.equals(newValue, oldValue));
-            if(scope.editModeActive && newValue !== oldValue && newValue) {
+            // console.log(oldValue, newValue);
+            // console.log(angular.equals(newValue, oldValue));
+            if(scope.editModeActive && newValue !== oldValue) {
               enableSubmitButton();
             }
           }, true);
@@ -123,7 +124,9 @@ angular.module('tink.fieldsetEditable', [])
           scope.editModeActive = true;
           var form = $(element).closest('form');
           scope.originalContents = $(form).serializeArray();
-          console.log(scope.originalContents);
+          // console.log(scope.originalContents);
+          scope.originalData = angular.copy(scope.data);
+          // console.log(scope.originalData);
 
           // Checkbox fix
           scope.checkboxClicked = checkbox;
@@ -177,6 +180,7 @@ angular.module('tink.fieldsetEditable', [])
                 obj[data[i].name] = data[i].value;
             }
 
+            // Normal objects
             $.each(els, function() {
               if (this.name && obj[this.name]) {
                 if(this.type === 'checkbox') {
@@ -210,6 +214,12 @@ angular.module('tink.fieldsetEditable', [])
                 }
               }
             });
+
+            // Hacky objects
+            // console.log(scope.originalData);
+            scope.data = angular.copy(scope.originalData);
+            // console.log(scope.data);
+            scope.$apply();
           }
           return true;
         }
