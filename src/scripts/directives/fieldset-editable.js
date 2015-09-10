@@ -218,7 +218,7 @@ angular.module('tink.fieldsetEditable', [])
             // Hacky objects
             // console.log(scope.originalData);
             scope.data = angular.copy(scope.originalData);
-            // console.log(scope.data);
+            console.log(scope.data);
             scope.$apply();
           }
           return true;

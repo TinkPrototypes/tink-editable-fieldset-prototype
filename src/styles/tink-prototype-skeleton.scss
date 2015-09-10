@@ -147,6 +147,10 @@
       background-color: $white;
       border: 1px solid $input-border;
 
+      &:focus {
+        border: 1px solid $input-border-focus;
+      }
+
       &[disabled] {
         border: 1px solid transparent;
       }
