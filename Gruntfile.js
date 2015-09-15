@@ -1,4 +1,3 @@
-// Generated on 2015-05-08 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
@@ -474,6 +473,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'copy:styles'
+    'newer:jshint',
+    'test',
+    'build'
   ]);
 };

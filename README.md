@@ -2,7 +2,7 @@
 
 v0.0.1
 
-## How to run
+## How to run the distribution code
 
 ### In terminal
 

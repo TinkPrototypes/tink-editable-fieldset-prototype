@@ -2,10 +2,7 @@
   "name": "tink-prototype-skeleton",
   "description": "Tink prototype skeleton",
   "version": "0.0.1",
-  "repository": {
-    "type": "git",
-    "url": "git@bitbucket.org:TriangleJuice/tink-prototype-skeleton.git"
-  },
+  "repository": {},
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
