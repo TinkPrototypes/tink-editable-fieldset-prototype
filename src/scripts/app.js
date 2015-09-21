@@ -21,7 +21,8 @@
    'tink.tinkApi',
    'tink.datepicker',
    'tink.identitycardnumber',
-   'tink.fieldsetEditable'
+   'tink.fieldsetEditable',
+   'tink.sticktotop'
    ])
  .config(function ($routeProvider) { /*, $locationProvider */
   $routeProvider

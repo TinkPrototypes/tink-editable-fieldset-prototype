@@ -32,7 +32,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // Hover behaviour
-          $(element).find(':input, .faux-input, input[type=\'checkbox\'] + label, input[type=\'radio\'] + label').hover(function() {
+          $(element).find(':input, .faux-input, input[type=\'checkbox\'] + label, input[type=\'radio\'] + label, .datepicker-icon').hover(function() {
             if(!scope.editModeActive) {
               $(element).addClass('fieldset-editable-is-hovered');
             }
@@ -91,11 +91,11 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // Show input field when link is clicked
-          $(element).find('.anchor-add').click(function() {
-            $('.anchor-add').toggle(0);
-            $('.input-add').toggle(0);
-            $(this).next().find(':input').focus();
-          });
+          // $(element).find('.anchor-add').click(function() {
+          //   $('.anchor-add').toggle(0);
+          //   $('.input-add').toggle(0);
+          //   $(this).next().find(':input').focus();
+          // });
 
 
           // Watch for ng-model-change on date field
@@ -122,11 +122,12 @@ angular.module('tink.fieldsetEditable', [])
         function enableEditMode(event, checkbox) {
           $(element).addClass('fieldset-editable-is-active');
           scope.editModeActive = true;
-          var form = $(element).closest('form');
+          var form = $(element).find('form');
+          // var wrapper = $(element).closest('.the-fieldset');
           scope.originalContents = $(form).serializeArray();
-          // console.log(scope.originalContents);
+          console.log(scope.originalContents);
           scope.originalData = angular.copy(scope.data);
-          // console.log(scope.originalData);
+          console.log(scope.originalData);
 
           // Checkbox fix
           scope.checkboxClicked = checkbox;
@@ -138,6 +139,7 @@ angular.module('tink.fieldsetEditable', [])
             }
           }, 10);
           $(element).removeClass('fieldset-editable-is-hovered');
+          // $(wrapper).addClass('fieldset-editable-buttons-are-visible');
         }
 
 
