@@ -32,7 +32,7 @@ angular.module('tink.fieldsetEditable', [])
 
 
           // Hover behaviour
-          $(element).find(':input, .faux-input, input[type=\'checkbox\'] + label, input[type=\'radio\'] + label, .datepicker-icon').hover(function() {
+          $(element).find(':input, .faux-input, input[type=\'checkbox\'] + label, input[type=\'radio\'] + label, .datepicker-icon, .add-icon').hover(function() {
             if(!scope.editModeActive) {
               $(element).addClass('fieldset-editable-is-hovered');
             }
@@ -47,6 +47,13 @@ angular.module('tink.fieldsetEditable', [])
           $(element).find(':input, .faux-input').focus(function(event) {
             if(!scope.editModeActive) {
               enableEditMode(event, '');
+            }
+          });
+          $(element).find('.add-icon').click(function(event) {
+            if(!scope.editModeActive) {
+              event.preventDefault();
+              enableEditMode(event, '');
+              $(this).prev().focus();
             }
           });
           $(element).find('input[type=\'checkbox\'], input[type=\'radio\']').change(function() {
@@ -132,12 +139,12 @@ angular.module('tink.fieldsetEditable', [])
           // Checkbox fix
           scope.checkboxClicked = checkbox;
 
-          window.setTimeout (function(){
-            try {
-              event.currentTarget.select();
-            } catch(e) {
-            }
-          }, 10);
+          // window.setTimeout (function(){
+          //   try {
+          //     event.currentTarget.select();
+          //   } catch(e) {
+          //   }
+          // }, 10);
           $(element).removeClass('fieldset-editable-is-hovered');
           // $(wrapper).addClass('fieldset-editable-buttons-are-visible');
         }
@@ -212,7 +219,9 @@ angular.module('tink.fieldsetEditable', [])
                   $(this).prop('checked', false); // Radio button was initially unchecked and was not clicked first
 
                 } else {
-                  $(this).val('');
+                  if($(this).prop('disabled') === false) {
+                    $(this).val('');
+                  }
                 }
               }
             });
